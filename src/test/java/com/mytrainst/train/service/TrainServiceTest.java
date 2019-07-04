@@ -36,7 +36,7 @@ public class TrainServiceTest {
         given(repository.findByName(Mockito.anyString()))
                 .willReturn(new Train("123" ,name, type));
         //act
-        val train = trainService.findByName(name);
+        Train train = trainService.findByName(name);
 
         //verify
         assertThat(train).isNotNull();

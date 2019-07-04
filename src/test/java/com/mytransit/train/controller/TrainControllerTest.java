@@ -3,7 +3,6 @@ package com.mytransit.train.controller;
 import com.mytrainst.train.Application;
 import com.mytrainst.train.domain.Train;
 import com.mytrainst.train.repository.ITrainRepository;
-import com.mytrainst.train.service.ITrainService;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
@@ -13,13 +12,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.annotation.PostConstruct;
 
 import static io.restassured.RestAssured.given;
 import static junit.framework.TestCase.assertNotNull;
@@ -30,9 +26,9 @@ import static org.hamcrest.core.IsEqual.equalTo;
 @ContextConfiguration(classes = Application.class)
 public class TrainControllerTest {
 
-    public static final String VALID_ID = "TRAIN-123";
-    public static final String VALID_TRAIN_NAME = "EAST-WEST-COAST-EXPRESS";
-    public static final String VALID_TYPE = "EXPRESS-TRAIN";
+    private static final String VALID_ID = "TRAIN-123";
+    private static final String VALID_TRAIN_NAME = "EAST-WEST-COAST-EXPRESS";
+    private static final String VALID_TYPE = "EXPRESS-TRAIN";
 
     @Autowired
     private ITrainRepository repository;
@@ -42,7 +38,7 @@ public class TrainControllerTest {
 
     @Before
     public void init() {
-        val train = repository.save(new Train(VALID_ID, VALID_TRAIN_NAME, VALID_TYPE));
+        Train train = repository.save(new Train(VALID_ID, VALID_TRAIN_NAME, VALID_TYPE));
         assertNotNull(train);
     }
 
