@@ -38,7 +38,7 @@ public class TrainControllerTest {
 
     @Before
     public void init() {
-        Train train = repository.save(new Train(VALID_ID, VALID_TRAIN_NAME, VALID_TYPE));
+        val train = repository.save(new Train(VALID_ID, VALID_TRAIN_NAME, VALID_TYPE));
         assertNotNull(train);
     }
 
