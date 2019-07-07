@@ -7,21 +7,21 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
 import lombok.val;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static io.restassured.RestAssured.given;
-import static junit.framework.TestCase.assertNotNull;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ContextConfiguration(classes = Application.class)
 public class TrainControllerTest {
@@ -36,14 +36,14 @@ public class TrainControllerTest {
     @LocalServerPort
     private int port;
 
-    @Before
-    public void init() {
+    @BeforeEach
+    void init() {
         val train = repository.save(new Train(VALID_ID, VALID_TRAIN_NAME, VALID_TYPE));
         assertNotNull(train);
     }
 
     @Test
-    public void shouldReturnTrainForAValidName() {
+    void shouldReturnTrainForAValidName() {
 
         RestAssured.registerParser("text/json", Parser.JSON);
 

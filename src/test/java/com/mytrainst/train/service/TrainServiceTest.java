@@ -3,20 +3,20 @@ package com.mytrainst.train.service;
 import com.mytrainst.train.domain.Train;
 import com.mytrainst.train.exception.TrainNotFoundException;
 import com.mytrainst.train.repository.ITrainRepository;
-import lombok.val;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.reset;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = MyTestConfiguration.class)
 public class TrainServiceTest {
 
@@ -44,13 +44,15 @@ public class TrainServiceTest {
         assertThat(train.getType()).isEqualTo(type);
     }
 
-    @Test(expected = TrainNotFoundException.class)
-    public void testShouldThrowTrainNotFoundException() {
+    @Test
+    void testShouldThrowTrainNotFoundException() {
         reset(repository);
         //given
         given(repository.findByName(Mockito.anyString()))
                 .willReturn(null);
         String name = "South east corridor";
-        trainService.findByName(name);
+        Assertions.assertThrows(TrainNotFoundException.class,
+                                () -> trainService.findByName(name),
+                                "TrainNotFoundException was not thrown.");
     }
 }
