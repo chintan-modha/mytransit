@@ -1,6 +1,6 @@
-package com.mytrainst.train.controller;
+package com.mytransit.train.controller;
 
-import com.mytrainst.train.domain.Train;
+import com.mytransit.train.domain.Train;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

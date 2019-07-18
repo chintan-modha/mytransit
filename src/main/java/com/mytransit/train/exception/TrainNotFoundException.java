@@ -1,4 +1,4 @@
-package com.mytrainst.train.exception;
+package com.mytransit.train.exception;
 
 public class TrainNotFoundException extends RuntimeException {
 

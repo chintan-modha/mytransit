@@ -1,8 +1,8 @@
-package com.mytrainst.train.service;
+package com.mytransit.train.service;
 
-import com.mytrainst.train.domain.Train;
-import com.mytrainst.train.exception.TrainNotFoundException;
-import com.mytrainst.train.repository.ITrainRepository;
+import com.mytransit.train.domain.Train;
+import com.mytransit.train.exception.TrainNotFoundException;
+import com.mytransit.train.repository.ITrainRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

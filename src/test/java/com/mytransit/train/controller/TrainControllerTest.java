@@ -1,8 +1,7 @@
 package com.mytransit.train.controller;
 
-import com.mytrainst.train.Application;
-import com.mytrainst.train.domain.Train;
-import com.mytrainst.train.repository.ITrainRepository;
+import com.mytransit.train.domain.Train;
+import com.mytransit.train.repository.ITrainRepository;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
@@ -23,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ContextConfiguration(classes = Application.class)
+@ContextConfiguration(classes = TestConfiguration.class)
 public class TrainControllerTest {
 
     private static final String VALID_ID = "TRAIN-123";

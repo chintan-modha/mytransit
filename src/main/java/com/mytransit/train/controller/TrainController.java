@@ -1,7 +1,7 @@
-package com.mytrainst.train.controller;
+package com.mytransit.train.controller;
 
-import com.mytrainst.train.domain.Train;
-import com.mytrainst.train.service.ITrainService;
+import com.mytransit.train.domain.Train;
+import com.mytransit.train.service.ITrainService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

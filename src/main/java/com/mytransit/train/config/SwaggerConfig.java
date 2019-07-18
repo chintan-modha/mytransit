@@ -1,4 +1,4 @@
-package com.mytrainst.train.config;
+package com.mytransit.train.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
